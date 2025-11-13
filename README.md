@@ -19,13 +19,43 @@ yarn add @pluschong/console-overlay
 ## 使用方法
 
 ```ts
-import consoleOverlay from '@pluschong/console-overlay';
+import { consoleSrv } from '@pluschong/console-overlay';
 
-// 使用封装后的 console 方法
-consoleOverlay.log('普通日志');
-consoleOverlay.warn('警告信息');
-consoleOverlay.error('错误信息');
-consoleOverlay.info('提示信息');
+// 错误信息（红色）
+consoleSrv.error('ErrorTag', { message: 'Something went wrong' });
+
+// 警告信息（黄色）
+consoleSrv.warn('WarnTag', { data: 'Warning message' });
+
+// 调试信息（可自定义颜色）
+consoleSrv.info('InfoTag', { info: 'Debug info' });
+consoleSrv.info('InfoTag', { info: 'Custom color' }, 'blue');
+
+// 自定义输出
+consoleSrv.custom({ message: 'Custom log' }, 'arg1', 'arg2');
+```
+
+## API 说明
+
+### consoleSrv.error(tag: string, err: any)
+输出错误信息（红色标签）
+
+### consoleSrv.warn(tag: string, data: any)
+输出警告信息（黄色标签）
+
+### consoleSrv.info(tag: string, data: any, color?: string)
+输出调试信息，可选自定义颜色
+
+### consoleSrv.custom(info: any, ...args: any[])
+自定义输出格式
+
+### consoleSrv.setConfig(config: Partial<SrvCfg>)
+配置日志开关
+```ts
+consoleSrv.setConfig({
+  enableError: false,  // 关闭错误日志
+  enableInfo: false    // 关闭调试日志
+});
 ```
 
 ## 特性说明
