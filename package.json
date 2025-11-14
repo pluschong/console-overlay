@@ -4,6 +4,14 @@
   "description": "在控制台更好的显示console内容",
   "main": "index.js",
   "types": "index.d.ts",
+  "keywords": [
+    "console",
+    "log",
+    "debug",
+    "overlay",
+    "logger",
+    "formatting"
+  ],
   "author": "pluschong",
   "license": "MIT",
   "repository": {
